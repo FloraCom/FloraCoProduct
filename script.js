@@ -127,7 +127,7 @@ document.addEventListener('DOMContentLoaded', function () {
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     const product = {
-      id: document.getElementById('product-id').value,
+      id: '',
       name: document.getElementById('product-name').value,
       parentCategory: parentCategory.value,
       subCategory: subCategory.value,
@@ -149,6 +149,7 @@ document.addEventListener('DOMContentLoaded', function () {
           var id = snapshot.val();
 
           let pid = 'FCPS'+id.toString().padStart(5, "0");
+          product.id = pid;
 
           set(ref(db, 'products/all/'+product.parentCategory+'/'+product.subCategory+"/"+pid), product)
               .then(()=>{
@@ -178,6 +179,8 @@ document.addEventListener('DOMContentLoaded', function () {
   function displayProducts() {
 
     products = [];
+    let content = document.getElementById('content');
+    content.innerHTML = "";
 
     get(child(ref(db), 'products/all/')).then((snapshot)=>{
         var getClassOf = Function.prototype.call.bind(Object.prototype.toString);
@@ -210,7 +213,6 @@ document.addEventListener('DOMContentLoaded', function () {
           ${prod.variations.map(v => `<li>${v.id} - ${v.name} - <a href="${v.image}" target="_blank">Image</a></li>`).join('')}
         </ul>
       `;
-      let content = document.getElementById('content');
       content.appendChild(div);
       });
     });
