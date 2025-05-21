@@ -24,7 +24,7 @@ const db = getDatabase();
 document.addEventListener('DOMContentLoaded', function () {
   const categories = {
     "floral-supply": ["flowers", "decorations", "buds"],
-    "plant": ["air", "aquatic", "bamboo", "bonsai", "cactus", "carnivorus", "climber", "conifer", "creeper", "cycad", "flowering", "ferns", "ficus", "fig", "fruit", "grafted-fruit", "ground-cover", "herb", "kokedama", "palm", "perennial", "shrubs", "spice", "succulent"],
+    "plant": ["air", "aquatic", "bamboo", "bonsai", "cactus", "carnivorus", "climber", "conifer", "creeper", "cycad", "decorative", "flowering", "ferns", "ficus", "fig", "fruit", "grafted-fruit", "ground-cover", "herb", "kokedama", "palm", "perennial", "shrubs", "spice", "succulent", "vegetable"],
     "tree": ["fruit-tree", "shade-tree", "evergreen"],
     "seed": ["vegetable", "flower", "herb"],
     "bulb": ["flowering", "fruit"],
