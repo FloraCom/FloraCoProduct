@@ -23,7 +23,7 @@ const db = getDatabase();
 
 document.addEventListener('DOMContentLoaded', function () {
   const categories = {
-    "floral-supply": ["flowers", "fecorations", "buds"],
+    "floral-supply": ["flowers", "decorations", "buds"],
     "plant": ["air", "aquatic", "bamboo", "bonsai", "cactus", "carnivorus", "climber", "conifer", "creeper", "cycad", "flowering", "ferns", "ficus", "fig", "fruit", "grafted-fruit", "ground-cover", "herb", "kokedama", "palm", "perennial", "shrubs", "spice", "succulent"],
     "tree": ["fruit-tree", "shade-tree", "evergreen"],
     "seed": ["vegetable", "flower", "herb"],
@@ -109,11 +109,22 @@ document.addEventListener('DOMContentLoaded', function () {
     const div = document.createElement('div');
     div.className = 'variation-group';
     div.innerHTML = `
+      <p><strong style="color:"green";"> • Variation:</strong></p>
       <input type="text" name="variation-id" placeholder="e.g. PLT-SML-BL" required />
       <input type="text" name="variation-name" placeholder="e.g. S (Small), L (Large) etc.," required />
       <input type="number" name="variation-price" placeholder="e.g. 499" required />
+
+      <div class="form-group">
+        <label>Stock Status:</label>
+        <label class="switch">
+          <input type="checkbox" id="stock-status" name="variation-status" checked="true" />
+          <span class="slider round"></span>
+        </label>
+      </div>
+
       <input type="url" name="variation-image" placeholder="Image URL" />
       <img class="variation-image-preview" src="" alt="Preview" />
+      <hr>
     `;
     variationContainer.appendChild(div);
 
@@ -133,11 +144,11 @@ document.addEventListener('DOMContentLoaded', function () {
       subCategory: subCategory.value,
       description: description.value,
       tags: Array.from(tagInputContainer.querySelectorAll('.tag')).map(t => t.textContent),
-      stockStatus: document.getElementById('stock-status').checked,
       variations: Array.from(variationContainer.querySelectorAll('.variation-group')).map(v => ({
         id: v.querySelector('[name="variation-id"]').value,
         name: v.querySelector('[name="variation-name"]').value,
         price: v.querySelector('[name="variation-price"]').value,
+        stock: v.querySelector('[name="variation-status"]').checked,
         image: v.querySelector('[name="variation-image"]').value
       }))
     };

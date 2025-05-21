@@ -172,6 +172,10 @@ input:checked + .slider::before {
   text-align: center;
 }
 
+.variation-image-preview{
+  margin-bottom: 20px;
+}
+
 @media (max-width: 768px) {
   .form-container {
     padding: 15px;
